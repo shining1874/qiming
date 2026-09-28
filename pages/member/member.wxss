@@ -1,0 +1,18 @@
+/* 会员中心 · 页面样式 */
+.mem-state { background: linear-gradient(135deg, #FFFDF8, #F1E4CF); }
+.mem-state.on { background: linear-gradient(135deg, #F7E4E0, #F1E4CF); }
+.mem-badge { font-size: 30rpx; font-weight: 700; color: var(--gold); margin-bottom: 12rpx; }
+.mem-badge.off { color: var(--sub); }
+.mem-state .h-note { margin-bottom: 18rpx; }
+
+.benefit { display: flex; align-items: center; gap: 14rpx; font-size: 25rpx; color: var(--ink2); padding: 8rpx 0; }
+.benefit-dot { color: var(--red); font-weight: 700; }
+
+.plan { padding: 14rpx 0; }
+.plan-head { display: flex; align-items: center; gap: 14rpx; margin-bottom: 6rpx; }
+.plan-title { font-size: 28rpx; font-weight: 700; color: var(--ink); }
+.plan-price { font-size: 30rpx; font-weight: 700; color: var(--red); }
+.plan-price::before { content: ''; }
+
+.menu { padding: 18rpx 0; }
+.menu:active { opacity: .7; }

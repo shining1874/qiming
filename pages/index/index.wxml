@@ -1,0 +1,56 @@
+<view class="page">
+
+  <!-- 品牌头图 -->
+  <view class="hero">
+    <view class="hero-seal">知行</view>
+    <view class="hero-title serif">知行起名</view>
+    <view class="hero-sub">八字五行 · 诗经楚辞，双维度为你取一个好名字</view>
+    <view class="hero-tip">起名工具全部免费 · 八字排盘深度解读为会员专享</view>
+  </view>
+
+  <!-- 起名核心 -->
+  <view class="h-section">起名核心</view>
+  <view class="grid">
+    <view class="tile" wx:for="{{coreTiles}}" wx:key="title" data-url="{{item.url}}" bindtap="go">
+      <view class="tile-emoji">{{item.emoji}}</view>
+      <view class="tile-title">{{item.title}}</view>
+      <view class="tile-sub">{{item.sub}}</view>
+    </view>
+  </view>
+
+  <!-- 文化工具箱 · 瑞士军刀 -->
+  <view class="h-section">文化工具箱 · 瑞士军刀</view>
+  <view class="grid">
+    <view class="tile" wx:for="{{toolTiles}}" wx:key="title" data-url="{{item.url}}" bindtap="go">
+      <view class="tile-emoji">{{item.emoji}}</view>
+      <view class="tile-title">{{item.title}}</view>
+      <view class="tile-sub">{{item.sub}}</view>
+    </view>
+  </view>
+
+  <!-- 深度服务 -->
+  <view class="h-section">深度服务</view>
+  <view class="grid">
+    <view class="tile" wx:for="{{vipTiles}}" wx:key="title" data-url="{{item.url}}" bindtap="go">
+      <view class="tile-emoji">{{item.emoji}}</view>
+      <view class="tile-title">{{item.title}}</view>
+      <view class="tile-sub">{{item.sub}}</view>
+    </view>
+  </view>
+
+  <!-- 推广引导 -->
+  <view class="promo card" bindtap="goXhs">
+    <view class="promo-left">
+      <view class="promo-title">📕 关注小红书：知行起名</view>
+      <view class="promo-sub">更多起名案例 · 五行科普 · 姓氏清单，私信王老师一对一咨询</view>
+    </view>
+    <view class="promo-btn">去关注</view>
+  </view>
+
+  <!-- 合规声明 -->
+  <view class="notice">
+    温馨提示：本小程序提供的起名与五行、五格分析，均属中华姓名学与传统文化的赏析参考，纯属娱乐，不构成任何命运断言或吉凶承诺。
+  </view>
+
+  <view class="safe-bottom"></view>
+</view>

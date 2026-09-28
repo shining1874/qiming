@@ -1,0 +1,30 @@
+<view class="page">
+
+  <view class="h-section">我的收藏</view>
+  <view class="notice">在这里查看你收藏的佳名。长按或点击右侧可移除。</view>
+
+  <block wx:if="{{list.length}}">
+    <view class="name-card" wx:for="{{list}}" wx:key="key">
+      <view class="name-main">
+        <text class="name-text">{{item.full}}</text>
+        <text class="name-py">{{item.py}}</text>
+        <view class="grow"></view>
+        <text class="chip chip-plain">{{item.type}}</text>
+      </view>
+      <view class="name-line">寓意：{{item.yy}}</view>
+      <view class="name-src">出处：{{item.src}}</view>
+      <view class="row" style="justify-content:flex-end;margin-top:10rpx;">
+        <text class="btn btn-ghost btn-sm" data-key="{{item.key}}" bindtap="remove">移除</text>
+      </view>
+    </view>
+  </block>
+
+  <view class="empty" wx:else>
+    <view class="empty-icon">☆</view>
+    <view>还没有收藏的名字</view>
+    <view class="h-note" style="margin-top:12rpx;">去起名页，点击名字右侧的 ★ 即可收藏</view>
+    <view class="btn btn-gold btn-sm" style="margin-top:24rpx;" bindtap="goIndex">去起名</view>
+  </view>
+
+  <view class="safe-bottom"></view>
+</view>

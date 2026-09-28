@@ -1,0 +1,20 @@
+.cat-scroll { white-space: nowrap; margin: 0 -4rpx; }
+.cat-row { display: inline-flex; gap: 16rpx; padding: 4rpx; }
+.cat-item {
+  display: inline-block; padding: 14rpx 30rpx; border-radius: 999rpx;
+  background: var(--card); border: 1rpx solid var(--bd); font-size: 25rpx; color: var(--sub);
+}
+.cat-item.on { background: var(--red); color: #fff; border-color: var(--red); }
+
+.poem-card { padding: 26rpx; margin-bottom: 20rpx; }
+.sentence { font-size: 32rpx; color: var(--ink); line-height: 1.7; margin: 16rpx 0 18rpx; }
+.names { display: flex; flex-wrap: wrap; gap: 16rpx; }
+.name-block {
+  flex: 1 1 46%; min-width: 260rpx; background: var(--paper); border: 1rpx solid var(--bd);
+  border-radius: 16rpx; padding: 16rpx 18rpx;
+}
+.nb-name { font-size: 36rpx; font-weight: 700; letter-spacing: 3rpx; }
+.nb-py { font-size: 21rpx; color: var(--sub); margin-left: 12rpx; }
+.nb-yy { font-size: 22rpx; color: var(--ink2); margin-top: 8rpx; line-height: 1.6; }
+.star { font-size: 40rpx; color: var(--faint); padding: 0 6rpx; }
+.star-on { color: var(--red); }

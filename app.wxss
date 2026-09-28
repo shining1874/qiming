@@ -1,0 +1,186 @@
+/* ===== 知行起名 · 全局国风样式 ===== */
+page {
+  /* 视觉色板：宣纸米色 + 朱红 + 金棕 */
+  --paper: #F5F1E8;
+  --paper2: #ECE3D2;
+  --card: #FFFDF8;
+  --ink: #2B2118;
+  --ink2: #5B4A38;
+  --sub: #8A7A66;
+  --faint: #B6A98F;
+  --bd: #E7DCC6;
+  --red: #C0392B;
+  --red-s: #F7E4E0;
+  --gold: #9C6B3C;
+  --gold-s: #F1E4CF;
+  /* 五行配色（仅作文化示意） */
+  --wx-mu: #5B8C4A;
+  --wx-huo: #C0392B;
+  --wx-tu: #B5894E;
+  --wx-jin: #C9A227;
+  --wx-shui: #3E7CB1;
+  --sh: rgba(43, 33, 24, .08);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "STSong", "STKaiti", "Microsoft YaHei", serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+view, text, scroll-view, button, input, textarea, navigator {
+  box-sizing: border-box;
+}
+
+.page {
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 24rpx 24rpx 60rpx;
+}
+
+/* ===== 卡片 ===== */
+.card {
+  background: var(--card);
+  border: 1rpx solid var(--bd);
+  border-radius: 24rpx;
+  box-shadow: 0 6rpx 24rpx var(--sh);
+}
+.card-pad { padding: 28rpx; }
+
+/* ===== 文字 ===== */
+.muted { color: var(--sub); }
+.faint { color: var(--faint); }
+.strong { font-weight: 600; }
+.serif { font-family: "STKaiti", "STSong", "PingFang SC", serif; }
+.t-center { text-align: center; }
+.t-red { color: var(--red); }
+.t-gold { color: var(--gold); }
+
+/* ===== 布局 ===== */
+.row { display: flex; align-items: center; }
+.row-between { display: flex; align-items: center; justify-content: space-between; }
+.col { display: flex; flex-direction: column; }
+.wrap { flex-wrap: wrap; }
+.grow { flex: 1; min-width: 0; }
+.gap8 { gap: 8rpx; }
+.gap12 { gap: 12rpx; }
+.gap16 { gap: 16rpx; }
+
+/* ===== 按钮 ===== */
+.btn {
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 999rpx; font-weight: 600; line-height: 1.4;
+  transition: transform .12s ease, opacity .12s ease;
+}
+.btn:active { transform: scale(.97); opacity: .88; }
+.btn-primary { background: var(--red); color: #fff; box-shadow: 0 8rpx 20rpx rgba(192,57,43,.22); }
+.btn-gold { background: linear-gradient(135deg, var(--gold), #B9814C); color: #fff; }
+.btn-ghost { background: var(--card); color: var(--ink); border: 2rpx solid var(--bd); }
+.btn-soft { background: var(--gold-s); color: var(--gold); }
+.btn-block { width: 100%; padding: 26rpx 0; font-size: 30rpx; }
+.btn-sm { padding: 14rpx 28rpx; font-size: 24rpx; }
+
+/* ===== 标签 chip ===== */
+.chip {
+  display: inline-flex; align-items: center; padding: 4rpx 16rpx;
+  border-radius: 999rpx; background: var(--gold-s); color: var(--gold);
+  font-size: 22rpx; line-height: 34rpx;
+}
+.chip-red { background: var(--red-s); color: var(--red); }
+.chip-plain { background: var(--paper2); color: var(--sub); }
+.chip-mu { background: rgba(91,140,74,.14); color: var(--wx-mu); }
+.chip-huo { background: rgba(192,57,43,.12); color: var(--wx-huo); }
+.chip-tu { background: rgba(181,137,78,.16); color: var(--wx-tu); }
+.chip-jin { background: rgba(201,162,39,.16); color: var(--wx-jin); }
+.chip-shui { background: rgba(62,124,177,.14); color: var(--wx-shui); }
+
+/* ===== 分割线 ===== */
+.hr { height: 2rpx; background: var(--bd); margin: 24rpx 0; }
+
+/* ===== 标题 ===== */
+.h-section {
+  font-size: 30rpx; font-weight: 700; color: var(--ink);
+  display: flex; align-items: center; gap: 12rpx; margin: 8rpx 0 18rpx;
+}
+.h-section::before {
+  content: ""; width: 8rpx; height: 30rpx; border-radius: 6rpx;
+  background: linear-gradient(var(--red), var(--gold));
+}
+.h-note { font-size: 23rpx; color: var(--sub); line-height: 1.7; }
+
+/* ===== 宫格（功能入口） ===== */
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20rpx; }
+.tile {
+  background: var(--card); border: 1rpx solid var(--bd); border-radius: 22rpx;
+  padding: 26rpx; box-shadow: 0 6rpx 18rpx var(--sh);
+}
+.tile-emoji { font-size: 48rpx; line-height: 1; }
+.tile-title { font-size: 28rpx; font-weight: 600; margin-top: 14rpx; }
+.tile-sub { font-size: 21rpx; color: var(--sub); margin-top: 6rpx; line-height: 1.5; }
+
+/* ===== 名字卡 ===== */
+.name-card {
+  background: var(--card); border: 1rpx solid var(--bd); border-radius: 20rpx;
+  padding: 22rpx 24rpx; margin-bottom: 18rpx; box-shadow: 0 4rpx 14rpx var(--sh);
+}
+.name-main { display: flex; align-items: baseline; gap: 12rpx; }
+.name-text { font-size: 40rpx; font-weight: 700; letter-spacing: 4rpx; color: var(--ink); }
+.name-py { font-size: 22rpx; color: var(--sub); }
+.name-line { font-size: 23rpx; color: var(--ink2); line-height: 1.7; margin-top: 8rpx; }
+.name-src { font-size: 21rpx; color: var(--faint); margin-top: 6rpx; line-height: 1.6; }
+
+/* ===== 表单 ===== */
+.field { margin-bottom: 22rpx; }
+.label { font-size: 25rpx; color: var(--ink2); margin-bottom: 10rpx; font-weight: 600; }
+.input, .textarea {
+  background: var(--paper); border: 1rpx solid var(--bd); border-radius: 16rpx;
+  padding: 20rpx 22rpx; font-size: 28rpx; color: var(--ink); width: 100%;
+}
+.input::placeholder, .textarea::placeholder { color: var(--faint); }
+.picker-box {
+  background: var(--paper); border: 1rpx solid var(--bd); border-radius: 16rpx;
+  padding: 20rpx 22rpx; font-size: 28rpx; color: var(--ink);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.seg { display: flex; background: var(--paper2); border-radius: 16rpx; padding: 6rpx; }
+.seg-item {
+  flex: 1; text-align: center; padding: 16rpx 0; font-size: 25rpx;
+  border-radius: 12rpx; color: var(--sub);
+}
+.seg-item.on { background: var(--card); color: var(--red); font-weight: 600; box-shadow: 0 2rpx 8rpx var(--sh); }
+
+/* ===== 空状态 ===== */
+.empty { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 140rpx 40rpx; color: var(--sub); }
+.empty-icon { width: 160rpx; height: 160rpx; border-radius: 50%; background: var(--paper2); display: flex; align-items: center; justify-content: center; font-size: 72rpx; margin-bottom: 24rpx; }
+
+/* ===== 提示条（合规/声明） ===== */
+.notice {
+  background: var(--gold-s); border: 1rpx solid #E6D3B0; border-radius: 16rpx;
+  padding: 18rpx 20rpx; font-size: 21rpx; color: var(--gold); line-height: 1.7;
+}
+
+/* ===== 五行条 ===== */
+.wxbar { display: flex; height: 26rpx; border-radius: 999rpx; overflow: hidden; background: var(--bd); }
+.wxbar > view { height: 100%; }
+
+/* ===== 安全区 ===== */
+.safe-bottom { height: calc(40rpx + env(safe-area-inset-bottom)); }
+
+/* ===== PC 大屏适配 ===== */
+@media (min-width: 600px) {
+  page { background: #E7DFD0; }
+  .page { max-width: 880px; margin: 0 auto; }
+  .grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ===== 跨页面复用：单字精解 / 字云 / 姓氏溯源 ===== */
+.chip-soft { background: var(--gold-s); color: var(--gold); }
+.dict-char { font-size: 96rpx; line-height: 1; color: var(--ink); }
+.dict-bh { font-size: 24rpx; color: var(--sub); }
+.dict-val { font-size: 26rpx; color: var(--ink2); line-height: 1.7; }
+.sx-block { margin-bottom: 20rpx; }
+.sx-block .label { display: block; margin-bottom: 10rpx; }
+.char-cloud { display: flex; flex-wrap: wrap; gap: 14rpx; }
+.char-chip { background: var(--paper); border: 1rpx solid var(--bd); border-radius: 14rpx; padding: 14rpx 0; display: flex; flex-direction: column; align-items: center; min-width: 84rpx; }
+.char-chip:active { background: var(--gold-s); }
+.char-chip-z { font-size: 44rpx; line-height: 1; color: var(--ink); }
+.char-chip-py { font-size: 18rpx; color: var(--sub); margin-top: 4rpx; }

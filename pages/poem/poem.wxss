@@ -1,0 +1,7 @@
+.poem-title { text-align: center; font-size: 38rpx; color: var(--ink); margin-bottom: 22rpx; letter-spacing: 4rpx; }
+.poem-body { padding: 8rpx 4rpx; }
+.poem-line { padding: 16rpx 0; border-bottom: 1rpx dashed var(--bd); }
+.poem-line:last-child { border-bottom: none; }
+.poem-text { display: block; font-size: 36rpx; color: var(--ink); line-height: 1.6; letter-spacing: 3rpx; }
+.poem-yy { font-size: 22rpx; color: var(--sub); line-height: 1.5; flex: 1; }
+.poem-note { font-size: 22rpx; color: var(--faint); line-height: 1.7; }

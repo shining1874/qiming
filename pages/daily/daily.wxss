@@ -1,0 +1,6 @@
+.daily-hero { display: flex; flex-direction: column; align-items: center; padding: 44rpx 28rpx; }
+.daily-date { font-size: 23rpx; color: var(--sub); letter-spacing: 1rpx; }
+.daily-name { font-size: 92rpx; font-weight: 700; letter-spacing: 10rpx; color: var(--ink); margin: 14rpx 0 6rpx; }
+.daily-py { font-size: 26rpx; color: var(--sub); letter-spacing: 2rpx; }
+.daily-yy { font-size: 27rpx; color: var(--ink2); line-height: 1.7; text-align: center; margin-top: 8rpx; }
+.daily-cd { font-size: 21rpx; margin-top: 10rpx; text-align: center; line-height: 1.6; }

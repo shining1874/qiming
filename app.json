@@ -1,0 +1,55 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/poetry/poetry",
+    "pages/bazi/bazi",
+    "pages/bazicha/bazicha",
+    "pages/relation/relation",
+    "pages/fixed/fixed",
+    "pages/test/test",
+    "pages/favorites/favorites",
+    "pages/member/member",
+    "pages/dict/dict",
+    "pages/shengxiao/shengxiao",
+    "pages/wuge/wuge",
+    "pages/poem/poem",
+    "pages/homophone/homophone",
+    "pages/pairing/pairing",
+    "pages/daily/daily",
+    "pages/surname/surname"
+  ],
+  "window": {
+    "navigationBarTitleText": "知行起名",
+    "navigationBarBackgroundColor": "#F5F1E8",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F5F1E8",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#9A8C76",
+    "selectedColor": "#C0392B",
+    "backgroundColor": "#FFFDF8",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/nav/home-off.png",
+        "selectedIconPath": "images/nav/home-on.png"
+      },
+      {
+        "pagePath": "pages/favorites/favorites",
+        "text": "收藏",
+        "iconPath": "images/nav/star-off.png",
+        "selectedIconPath": "images/nav/star-on.png"
+      },
+      {
+        "pagePath": "pages/member/member",
+        "text": "会员",
+        "iconPath": "images/nav/member-off.png",
+        "selectedIconPath": "images/nav/member-on.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

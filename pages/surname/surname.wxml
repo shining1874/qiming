@@ -1,0 +1,47 @@
+<view class="page">
+
+  <view class="h-section">百家姓溯源</view>
+  <view class="notice">溯姓氏之起源、郡望与历史名人，纯为中华姓氏文化赏析，不作任何考据断言。</view>
+
+  <view class="card card-pad">
+    <view class="field">
+      <view class="label">输入姓氏</view>
+      <view class="row gap12">
+        <input class="input grow" maxlength="1" placeholder="如：王" value="{{surname}}" bindinput="onSurname" />
+        <view class="btn btn-primary btn-sm" bindtap="query">查询</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="h-section">常见姓氏</view>
+  <view class="card card-pad">
+    <view class="char-cloud">
+      <view class="char-chip" wx:for="{{hot}}" wx:key="*this" data-s="{{item}}" bindtap="tapHot">
+        <text class="char-chip-z serif">{{item}}</text>
+      </view>
+    </view>
+  </view>
+
+  <block wx:if="{{surname}}">
+    <view class="card card-pad" wx:if="{{info}}">
+      <view class="row" style="align-items:flex-end;">
+        <text class="dict-char serif">{{surname}}</text>
+        <view class="grow"></view>
+        <text class="dict-bh" wx:if="{{stroke !== null}}">康熙 {{stroke}} 画</text>
+        <text class="dict-bh" wx:else>笔画未收录</text>
+      </view>
+      <view class="hr"></view>
+      <view class="sx-block"><text class="label">起源</text><text class="dict-val">{{info.o}}</text></view>
+      <view class="sx-block"><text class="label">郡望</text><text class="dict-val">{{info.j}}</text></view>
+      <view class="sx-block"><text class="label">历史名人</text><text class="dict-val">{{info.p}}</text></view>
+    </view>
+    <view class="card card-pad" wx:else>
+      <text class="dict-char serif" style="font-size:80rpx;">{{surname}}</text>
+      <view class="hr"></view>
+      <view class="h-note">{{fallbackText}}</view>
+      <view class="h-note" wx:if="{{stroke !== null}}" style="margin-top:12rpx;">该姓常见康熙笔画：{{stroke}} 画（供五格参考）。</view>
+    </view>
+  </block>
+
+  <view class="safe-bottom"></view>
+</view>

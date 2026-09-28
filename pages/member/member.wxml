@@ -1,0 +1,67 @@
+<view class="page">
+
+  <view class="hero">
+    <view class="hero-seal">知行</view>
+    <view class="hero-title serif">知行起名 · 会员中心</view>
+    <view class="hero-sub">传统文化赏析 · 名字里的诗意与五行</view>
+  </view>
+
+  <!-- 会员状态 -->
+  <view class="card card-pad mem-state {{isMember?'on':''}}">
+    <block wx:if="{{isMember}}">
+      <view class="mem-badge">✓ 尊享会员</view>
+      <view class="h-note">您已开通会员，八字排盘全部深度解读已解锁。前往「八字排盘」查看大运、喜用神与十神格局详解。</view>
+      <view class="btn btn-soft btn-block" bindtap="openBazicha">去八字排盘</view>
+    </block>
+    <block wx:else>
+      <view class="mem-badge off">未开通会员</view>
+      <view class="h-note">开通会员，解锁八字排盘的全部深度白话解读（大运、喜用神、十神格局、藏干纳音）。</view>
+      <view class="btn btn-gold btn-block" bindtap="unlock">开通会员</view>
+    </block>
+  </view>
+
+  <!-- 会员权益 -->
+  <view class="h-section">会员专享权益</view>
+  <view class="card card-pad">
+    <view class="benefit" wx:for="{{benefits}}" wx:key="*this">
+      <text class="benefit-dot">✓</text><text>{{item}}</text>
+    </view>
+  </view>
+
+  <!-- 王老师起名咨询 -->
+  <view class="h-section">王老师起名咨询</view>
+  <view class="card card-pad">
+    <view class="plan" wx:for="{{plans}}" wx:key="title">
+      <view class="plan-head">
+        <text class="plan-title">{{item.title}}</text>
+        <text class="plan-price">¥{{item.price}}</text>
+        <text class="chip chip-red" wx:if="{{item.hot}}">主推</text>
+      </view>
+      <view class="h-note">{{item.desc}}</view>
+    </view>
+    <view class="hr"></view>
+    <view class="btn btn-ghost btn-block" bindtap="openXhs">关注小红书「{{xhs}}」咨询</view>
+  </view>
+
+  <!-- 我的 -->
+  <view class="h-section">我的</view>
+  <view class="card card-pad">
+    <view class="row-between menu" bindtap="goFav">
+      <text>我的收藏</text><text class="faint">{{favCount}} 个 ›</text>
+    </view>
+    <view class="hr"></view>
+    <view class="row-between menu" bindtap="openXhs">
+      <text>关注小红书账户</text><text class="faint">{{xhs}} ›</text>
+    </view>
+  </view>
+
+  <!-- 关于 -->
+  <view class="h-section">关于知行起名</view>
+  <view class="card card-pad">
+    <view class="h-note">「知行起名」由王老师主理，取「知行合一」之意，融诗经楚辞之雅与八字五行之衡，为每一个名字注入诗意与期盼。所有起名与五行、五格分析，均属中华姓名学与传统文化的赏析参考，纯属娱乐，不构成任何命运断言或吉凶承诺。</view>
+  </view>
+
+  <view class="btn btn-soft btn-sm" style="margin:8rpx 0 0 auto;width:fit-content;" wx:if="{{devTrialVisible}}" bindtap="devTrial">🎯 体验会员（开发预览）</view>
+
+  <view class="safe-bottom"></view>
+</view>

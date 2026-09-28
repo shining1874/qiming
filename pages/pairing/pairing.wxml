@@ -1,0 +1,77 @@
+<view class="page">
+
+  <view class="h-section">姓名配对</view>
+  <view class="notice">从五行互补、五格笔画与寓意呼应，给两个名字做一个趣味契合参考。纯属娱乐，感情仍需用心经营。</view>
+
+  <view class="card card-pad">
+    <view class="field">
+      <view class="label">第一个名字</view>
+      <view class="row gap12">
+        <input class="input grow" placeholder="姓" value="{{s1}}" bindinput="onS1" />
+        <input class="input grow" placeholder="名" value="{{g1}}" bindinput="onG1" />
+      </view>
+    </view>
+    <view class="field">
+      <view class="label">第二个名字</view>
+      <view class="row gap12">
+        <input class="input grow" placeholder="姓" value="{{s2}}" bindinput="onS2" />
+        <input class="input grow" placeholder="名" value="{{g2}}" bindinput="onG2" />
+      </view>
+    </view>
+    <view class="btn btn-primary btn-block" bindtap="pair">开始配对</view>
+  </view>
+
+  <block wx:if="{{result}}">
+    <view class="card card-pad match-card">
+      <view class="match-num" style="color:{{result.color}};">{{result.index}}</view>
+      <view class="match-tier" style="color:{{result.color}};">{{result.tier}}</view>
+      <view class="h-note" style="text-align:center;">{{result.comment}}</view>
+    </view>
+
+    <view class="row gap12">
+      <view class="card card-pad grow">
+        <view class="name-text" style="font-size:32rpx;">{{result.a.full}}</view>
+        <view class="row gap8 wrap" style="margin-top:10rpx;">
+          <view class="chip {{item.cls}}" wx:for="{{result.a.wxItems}}" wx:key="wx">{{item.wx}}</view>
+          <text class="faint" wx:if="{{!result.a.wxItems.length}}">五行待补</text>
+        </view>
+        <view class="h-note" style="margin-top:8rpx;">笔画和 {{result.strokeA === null ? '—' : result.strokeA}}</view>
+      </view>
+      <view class="card card-pad grow">
+        <view class="name-text" style="font-size:32rpx;">{{result.b.full}}</view>
+        <view class="row gap8 wrap" style="margin-top:10rpx;">
+          <view class="chip {{item.cls}}" wx:for="{{result.b.wxItems}}" wx:key="wx">{{item.wx}}</view>
+          <text class="faint" wx:if="{{!result.b.wxItems.length}}">五行待补</text>
+        </view>
+        <view class="h-note" style="margin-top:8rpx;">笔画和 {{result.strokeB === null ? '—' : result.strokeB}}</view>
+      </view>
+    </view>
+
+    <view class="h-section">五行互补</view>
+    <view class="card card-pad">
+      <view class="pair-block">
+        <text class="label">共有（交集）</text>
+        <view class="row gap8 wrap">
+          <view class="chip {{item.cls}}" wx:for="{{result.interItems}}" wx:key="wx">{{item.wx}}</view>
+          <text class="faint" wx:if="{{!result.interItems.length}}">无</text>
+        </view>
+      </view>
+      <view class="pair-block">
+        <text class="label">仅甲有</text>
+        <view class="row gap8 wrap">
+          <view class="chip {{item.cls}}" wx:for="{{result.onlyAItems}}" wx:key="wx">{{item.wx}}</view>
+          <text class="faint" wx:if="{{!result.onlyAItems.length}}">无</text>
+        </view>
+      </view>
+      <view class="pair-block">
+        <text class="label">仅乙有</text>
+        <view class="row gap8 wrap">
+          <view class="chip {{item.cls}}" wx:for="{{result.onlyBItems}}" wx:key="wx">{{item.wx}}</view>
+          <text class="faint" wx:if="{{!result.onlyBItems.length}}">无</text>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <view class="safe-bottom"></view>
+</view>

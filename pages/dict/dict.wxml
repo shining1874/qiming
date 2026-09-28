@@ -1,0 +1,49 @@
+<view class="page">
+
+  <view class="h-section">字典 · 单字精解</view>
+  <view class="notice">一字一解：读音、五行、康熙笔画、寓意与典籍出处。属汉字文化赏析，纯属娱乐参考。</view>
+
+  <view class="card card-pad">
+    <view class="field">
+      <view class="label">输入一个汉字</view>
+      <view class="row gap12">
+        <input class="input grow" maxlength="1" placeholder="如：梓" value="{{char}}" bindinput="onChar" />
+        <view class="btn btn-primary btn-sm" bindtap="query">查询</view>
+      </view>
+    </view>
+    <view class="btn btn-ghost btn-block" bindtap="randChar">🎲 随机一个好字</view>
+  </view>
+
+  <block wx:if="{{detail}}">
+    <view class="card card-pad">
+      <view class="row" style="align-items:flex-end;">
+        <text class="dict-char serif">{{detail.z}}</text>
+        <text class="name-py">{{detail.py}}</text>
+        <view class="chip {{detail.wxcls}}" wx:if="{{detail.wx}}">{{detail.wx}}</view>
+        <view class="grow"></view>
+        <text class="dict-bh">康熙 {{detail.bh}} 画</text>
+      </view>
+      <view class="hr"></view>
+      <view class="dict-row"><text class="label">寓意</text><text class="dict-val">{{detail.yy}}</text></view>
+      <view class="dict-row" wx:if="{{detail.cd}}"><text class="label">典籍</text><text class="dict-val faint">{{detail.cd}}</text></view>
+    </view>
+  </block>
+  <view class="card card-pad" wx:else>
+    <view class="h-note">输入汉字查看详情，或点「随机一个好字」发现美字。常用名用字若未收录，可前往「姓名测试」「谐音避坑」等工具综合参考。</view>
+  </view>
+
+  <view class="h-section">按五行浏览</view>
+  <view class="seg">
+    <view class="seg-item {{curWx===item?'on':''}}" wx:for="{{wxTabs}}" wx:key="*this" data-wx="{{item}}" bindtap="selectWx">{{item}}行</view>
+  </view>
+  <view class="card card-pad">
+    <view class="char-cloud">
+      <view class="char-chip" wx:for="{{wxList}}" wx:key="z" data-z="{{item.z}}" bindtap="tapChar">
+        <text class="char-chip-z serif">{{item.z}}</text>
+        <text class="char-chip-py">{{item.py}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="safe-bottom"></view>
+</view>

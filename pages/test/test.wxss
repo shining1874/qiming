@@ -1,0 +1,5 @@
+/* 姓名测试 · 页面样式 */
+.ge-row { display: flex; align-items: center; gap: 16rpx; padding: 10rpx 0; }
+.ge-lab { width: 80rpx; font-size: 25rpx; color: var(--ink2); font-weight: 600; }
+.ge-num { width: 64rpx; text-align: center; font-size: 30rpx; font-weight: 700; color: var(--ink); }
+.ge-desc { flex: 1; font-size: 22rpx; color: var(--sub); line-height: 1.5; }

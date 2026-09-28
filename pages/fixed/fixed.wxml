@@ -1,0 +1,40 @@
+<view class="page">
+
+  <view class="h-section">定字起名</view>
+  <view class="notice">给定心仪的一个字，巧配另一字成佳名。属传统文化赏析，纯属娱乐。</view>
+
+  <view class="card card-pad">
+    <view class="field">
+      <view class="label">姓氏</view>
+      <input class="input" placeholder="如：王 / 池" value="{{surname}}" bindinput="onSurname" />
+    </view>
+    <view class="field">
+      <view class="label">定字（想保留的字）</view>
+      <input class="input" placeholder="如：知 / 一 / 安" value="{{fixedChar}}" bindinput="onFixed" maxlength="1" />
+    </view>
+    <view class="field">
+      <view class="label">名字字数</view>
+      <view class="seg">
+        <view class="seg-item {{len===1?'on':''}}" data-l="1" bindtap="onLen">定字+单字</view>
+        <view class="seg-item {{len===2?'on':''}}" data-l="2" bindtap="onLen">定字+双字</view>
+      </view>
+    </view>
+    <view class="btn btn-primary btn-block" bindtap="gen">生成名字</view>
+  </view>
+
+  <block wx:if="{{result.length}}">
+    <view class="h-section">为您搭配</view>
+    <view class="name-card" wx:for="{{result}}" wx:key="key">
+      <view class="name-main">
+        <text class="name-text">{{item.full}}</text>
+        <text class="name-py">{{item.py}}</text>
+        <view class="grow"></view>
+        <text class="star {{item.faved?'star-on':''}}" data-key="{{item.key}}" data-full="{{item.full}}" data-py="{{item.py}}" data-yy="{{item.yy}}" data-cd="{{item.cd}}" bindtap="toggleFav">★</text>
+      </view>
+      <view class="name-line">五行：{{item.wx || '—'}}　寓意：{{item.yy}}</view>
+      <view class="name-src">出处：{{item.cd}}</view>
+    </view>
+  </block>
+
+  <view class="safe-bottom"></view>
+</view>

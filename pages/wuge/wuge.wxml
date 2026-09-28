@@ -1,0 +1,54 @@
+<view class="page">
+
+  <view class="h-section">三才五格</view>
+  <view class="notice">五格剖象（天格·人格·地格·外格·总格）与三才配置、81 数理吉凶。属姓名学文化赏析，纯属娱乐，不作断言。</view>
+
+  <view class="card card-pad">
+    <view class="field">
+      <view class="label">姓氏</view>
+      <input class="input" placeholder="如：王" value="{{surname}}" bindinput="onSurname" />
+    </view>
+    <view class="field">
+      <view class="label">名字</view>
+      <input class="input" placeholder="如：知远 / 一" value="{{given}}" bindinput="onGiven" />
+    </view>
+    <view class="btn btn-primary btn-block" bindtap="calc">解析五格</view>
+  </view>
+
+  <block wx:if="{{result}}">
+    <view class="h-section">五格数理</view>
+    <view class="card card-pad">
+      <view class="ge-row" wx:for="{{geList}}" wx:key="lab">
+        <text class="ge-lab">{{item.lab}}</text>
+        <text class="ge-num">{{item.num}}</text>
+        <view class="chip {{item.cls}}">{{item.lvl}}</view>
+        <text class="ge-desc">{{item.desc}}</text>
+      </view>
+    </view>
+
+    <view class="h-section">三才配置</view>
+    <view class="card card-pad">
+      <view class="sancai">
+        <view class="san-box" wx:for="{{sanItems}}" wx:key="lab">
+          <text class="san-lab">{{item.lab}}</text>
+          <text class="san-wx" style="color:{{item.color}};">{{item.wx}}</text>
+        </view>
+      </view>
+      <view class="row gap12 wrap" style="margin-top:16rpx;">
+        <text class="label">组合</text>
+        <text class="strong t-gold" style="font-size:30rpx;">{{result.sanText}}</text>
+      </view>
+      <view class="h-note">{{result.tendency}}</view>
+    </view>
+
+    <view class="card card-pad row-between">
+      <view class="col">
+        <text class="label">收藏此名</text>
+        <text class="faint" style="font-size:22rpx;">存入「收藏」便于回顾</text>
+      </view>
+      <view class="btn btn-soft btn-sm {{result.faved?'':'btn-gold'}}" bindtap="toggleFav">{{result.faved?'已收藏 ★':'收藏 ☆'}}</view>
+    </view>
+  </block>
+
+  <view class="safe-bottom"></view>
+</view>

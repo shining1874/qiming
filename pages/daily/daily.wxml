@@ -1,0 +1,26 @@
+<view class="page">
+
+  <view class="h-section">每日美名</view>
+  <view class="notice">取一经典雅名，按当日日期确定性轮播，愿你今日得一名、得一心安。属文化赏析，纯属娱乐。</view>
+
+  <view class="card card-pad daily-hero">
+    <view class="daily-date">{{dateText}}</view>
+    <view class="daily-name serif">{{item.g}}</view>
+    <view class="daily-py">{{item.py}}</view>
+    <view class="row gap8" style="justify-content:center;margin:14rpx 0;">
+      <view class="chip {{item.wxcls}}" wx:for="{{item.wxItems}}" wx:key="wx">{{item.wx}}</view>
+    </view>
+    <view class="daily-yy">{{item.yy}}</view>
+    <view class="daily-cd faint">{{item.cd}}</view>
+  </view>
+
+  <view class="card card-pad row-between">
+    <view class="col">
+      <text class="label">收藏今日美名</text>
+      <text class="faint" style="font-size:22rpx;">存入「收藏」慢慢品</text>
+    </view>
+    <view class="btn btn-soft btn-sm {{faved?'':'btn-gold'}}" bindtap="toggleFav">{{faved?'已收藏 ★':'收藏 ☆'}}</view>
+  </view>
+
+  <view class="safe-bottom"></view>
+</view>

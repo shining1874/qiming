@@ -1,0 +1,16 @@
+{
+  "appid": "touristappid",
+  "projectname": "知行起名",
+  "description": "知行起名 · 微信小程序（姓名学文化参考工具：诗词起名、八字五行、定字起名、姓名测试、八字排盘深度解读）",
+  "miniprogramRoot": "./",
+  "compileType": "miniprogram",
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "postcss": true,
+    "minified": true,
+    "packNpmManually": false,
+    "packNpmRelationList": []
+  },
+  "condition": {}
+}

@@ -1,0 +1,4 @@
+.sx-block { margin-bottom: 20rpx; }
+.sx-block .label { display: block; margin-bottom: 12rpx; }
+.root { display: inline-flex; padding: 6rpx 18rpx; background: var(--paper2); border-radius: 10rpx; font-size: 24rpx; color: var(--ink2); line-height: 1.4; }
+.root-bad { background: var(--red-s); color: var(--red); }

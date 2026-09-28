@@ -1,0 +1,2 @@
+/* 定字起名 · 页面样式（复用全局 .name-card/.field 等） */
+.fixed-hint { font-size: 22rpx; color: var(--sub); margin-top: 6rpx; }

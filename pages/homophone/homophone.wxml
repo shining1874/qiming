@@ -1,0 +1,66 @@
+<view class="page">
+
+  <view class="h-section">谐音避坑</view>
+  <view class="notice">起名要"耐听"——连读、谐音、多音与生僻都可能影响日常称呼。本工具温和提醒，绝无贬损之意，纯属娱乐参考。</view>
+
+  <view class="card card-pad">
+    <view class="field">
+      <view class="label">姓氏</view>
+      <input class="input" placeholder="如：杜 / 李" value="{{surname}}" bindinput="onSurname" />
+    </view>
+    <view class="field">
+      <view class="label">名字</view>
+      <input class="input" placeholder="如：子腾 / 明轩" value="{{given}}" bindinput="onGiven" />
+    </view>
+    <view class="btn btn-primary btn-block" bindtap="check">开始检测</view>
+  </view>
+
+  <block wx:if="{{result}}">
+    <view class="banner banner-{{result.level}}">{{result.summary}}</view>
+
+    <block wx:if="{{result.combos.length}}">
+      <view class="h-section">连读谐音提醒</view>
+      <view class="warn-card" wx:for="{{result.combos}}" wx:key="match">
+        <text class="warn-match">{{item.match}}</text>
+        <text class="warn-note">{{item.note}}</text>
+      </view>
+    </block>
+
+    <block wx:if="{{result.charHints.length}}">
+      <view class="h-section">单字谐音提示</view>
+      <view class="card card-pad">
+        <view class="hint-row" wx:for="{{result.charHints}}" wx:key="char">
+          <text class="hint-char serif">{{item.char}}</text>
+          <text class="hint-note">{{item.note}}</text>
+        </view>
+      </view>
+    </block>
+
+    <block wx:if="{{result.poly.length}}">
+      <view class="h-section">多音字（请确认读音）</view>
+      <view class="card card-pad">
+        <view class="row gap12 wrap">
+          <view class="chip chip-plain" wx:for="{{result.poly}}" wx:key="*this">{{item}}</view>
+        </view>
+      </view>
+    </block>
+
+    <block wx:if="{{result.rare.length}}">
+      <view class="h-section">生僻复杂字</view>
+      <view class="card card-pad">
+        <view class="row gap12 wrap">
+          <view class="chip chip-red" wx:for="{{result.rare}}" wx:key="*this">{{item}}</view>
+        </view>
+        <view class="h-note" style="margin-top:12rpx;">生僻复杂字易造成户籍录入与书写困扰，建议斟酌替换。</view>
+      </view>
+    </block>
+
+    <view class="h-section">气质倾向</view>
+    <view class="card card-pad">
+      <view class="chip chip-soft">{{result.gender}}</view>
+      <view class="h-note" style="margin-top:12rpx;">气质为用字常见倾向的趣味参考，最终以家庭喜好与读音顺口为准。</view>
+    </view>
+  </block>
+
+  <view class="safe-bottom"></view>
+</view>

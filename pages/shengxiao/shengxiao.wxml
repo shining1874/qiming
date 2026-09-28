@@ -1,0 +1,76 @@
+<view class="page">
+
+  <view class="h-section">生肖起名</view>
+  <view class="notice">依生肖喜用字根、喜用五行与三合六合相冲，给出起名文化参考。属传统民俗，纯属娱乐，不作吉凶断言。</view>
+
+  <view class="card card-pad">
+    <view class="field">
+      <view class="label">选择生肖</view>
+      <picker mode="selector" range="{{zodiacs}}" value="{{zIndex}}" bindchange="onZodiac">
+        <view class="picker-box">{{zodiacs[zIndex]}}（{{info.dizhi}}）<text class="faint">　▾</text></view>
+      </picker>
+    </view>
+  </view>
+
+  <block wx:if="{{info}}">
+    <view class="card card-pad">
+      <view class="row gap12 wrap">
+        <view class="chip {{info.wxcls}}">{{info.wx}}行本气</view>
+        <view class="chip chip-plain">六合 · {{info.he}}</view>
+        <view class="chip chip-plain">三合 · {{info.sanhe}}</view>
+        <view class="chip chip-red">相冲 · {{info.chong}}</view>
+      </view>
+      <view class="hr"></view>
+      <view class="sx-block">
+        <text class="label">喜用五行</text>
+        <view class="row gap12 wrap">
+          <view class="chip {{item.cls}}" wx:for="{{xiWxCls}}" wx:key="wx">{{item.wx}}</view>
+        </view>
+      </view>
+      <view class="sx-block">
+        <text class="label">喜用字根</text>
+        <view class="row gap12 wrap">
+          <view class="root" wx:for="{{info.xiBu}}" wx:key="*this">{{item}}</view>
+        </view>
+      </view>
+      <view class="sx-block">
+        <text class="label">忌用字根</text>
+        <view class="row gap12 wrap">
+          <view class="root root-bad" wx:for="{{info.jiBu}}" wx:key="*this">{{item}}</view>
+        </view>
+      </view>
+      <view class="hr"></view>
+      <view class="h-note">{{info.note}}</view>
+    </view>
+
+    <view class="card card-pad">
+      <view class="field">
+        <view class="label">输入姓氏，按喜用五行生成佳名</view>
+        <view class="row gap12">
+          <input class="input grow" placeholder="如：王" value="{{surname}}" bindinput="onSurname" />
+          <view class="btn btn-primary btn-sm" bindtap="generate">生成</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="h-section">推荐佳名</view>
+    <block wx:if="{{recs.length}}">
+      <view class="name-card" wx:for="{{recs}}" wx:key="full">
+        <view class="name-main">
+          <text class="name-text">{{item.full}}</text>
+          <text class="name-py">{{item.py}}</text>
+          <view class="grow"></view>
+          <view class="row gap8">
+            <view class="chip {{wc.cls}}" wx:for="{{item.wxItems}}" wx:for-item="wc" wx:key="wx">{{wc.wx}}</view>
+          </view>
+        </view>
+        <view class="name-line">{{item.yy}}</view>
+      </view>
+    </block>
+    <view class="card card-pad" wx:elif="{{generated}}">
+      <view class="h-note">暂未生成推荐，请确认姓氏已填写后点击「生成」。</view>
+    </view>
+  </block>
+
+  <view class="safe-bottom"></view>
+</view>

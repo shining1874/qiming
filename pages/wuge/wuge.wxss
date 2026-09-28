@@ -1,0 +1,9 @@
+.ge-row { display: flex; align-items: center; gap: 14rpx; padding: 14rpx 0; border-bottom: 1rpx solid var(--bd); }
+.ge-row:last-child { border-bottom: none; }
+.ge-lab { width: 90rpx; font-size: 25rpx; color: var(--ink2); font-weight: 600; }
+.ge-num { width: 70rpx; font-size: 30rpx; color: var(--ink); font-weight: 700; text-align: center; }
+.ge-desc { flex: 1; font-size: 22rpx; color: var(--sub); line-height: 1.5; }
+.sancai { display: flex; gap: 14rpx; }
+.san-box { flex: 1; background: var(--paper); border: 2rpx solid var(--bd); border-radius: 16rpx; padding: 22rpx 0; display: flex; flex-direction: column; align-items: center; gap: 10rpx; }
+.san-lab { font-size: 22rpx; color: var(--sub); }
+.san-wx { font-size: 40rpx; font-weight: 700; }

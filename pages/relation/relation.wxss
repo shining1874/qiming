@@ -1,0 +1,12 @@
+.rel-card { padding: 24rpx; margin-bottom: 20rpx; }
+.rel-head { font-size: 26rpx; color: var(--ink2); margin-bottom: 16rpx; }
+.rel-shared { font-size: 40rpx; font-weight: 700; color: var(--red); letter-spacing: 2rpx; }
+.rel-pair { display: flex; flex-wrap: wrap; gap: 16rpx; }
+.rel-pair .name-block { flex: 1 1 46%; min-width: 240rpx; background: var(--paper); border: 1rpx solid var(--bd); border-radius: 16rpx; padding: 16rpx 18rpx; }
+.sib-list { display: flex; flex-wrap: wrap; gap: 16rpx; }
+.sib-list .name-block { flex: 1 1 30%; min-width: 200rpx; background: var(--paper); border: 1rpx solid var(--bd); border-radius: 16rpx; padding: 16rpx 18rpx; }
+.sentence { font-size: 30rpx; color: var(--ink); line-height: 1.7; margin: 14rpx 0 18rpx; }
+.nb-name { font-size: 36rpx; font-weight: 700; letter-spacing: 3rpx; }
+.nb-yy { font-size: 22rpx; color: var(--ink2); margin-top: 8rpx; line-height: 1.6; }
+.star { font-size: 40rpx; color: var(--faint); }
+.star-on { color: var(--red); }

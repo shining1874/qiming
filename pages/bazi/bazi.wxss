@@ -1,0 +1,9 @@
+.pillars { display: flex; }
+.pz { flex: 1; text-align: center; }
+.pz-lab { font-size: 22rpx; color: var(--sub); }
+.pz-gz { font-size: 44rpx; font-weight: 700; letter-spacing: 2rpx; color: var(--ink); margin-top: 6rpx; }
+.bar-legend { display: flex; justify-content: space-between; }
+.bl { font-size: 22rpx; }
+.bl-wx { font-weight: 700; }
+.star { font-size: 40rpx; color: var(--faint); }
+.star-on { color: var(--red); }

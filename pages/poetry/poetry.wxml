@@ -1,0 +1,40 @@
+<view class="page">
+
+  <!-- 分类 -->
+  <scroll-view scroll-x class="cat-scroll" enhanced show-scrollbar="{{false}}">
+    <view class="cat-row">
+      <view class="cat-item {{cat===item?'on':''}}" wx:for="{{cats}}" wx:key="*this" data-cat="{{item}}" bindtap="setCat">{{item}}</view>
+    </view>
+  </scroll-view>
+
+  <!-- 关键词 -->
+  <view class="field" style="margin-top:20rpx">
+    <input class="input" placeholder="可输入关键字，如「月、风、兰」筛选名句" value="{{keyword}}" bindinput="onKeyword" />
+  </view>
+
+  <!-- 名句列表 -->
+  <view class="poem-card card" wx:for="{{list}}" wx:key="sentence" wx:for-item="en">
+    <view class="row-between">
+      <view class="chip">{{en.cat}}</view>
+      <view class="faint" style="font-size:21rpx">{{en.book}}</view>
+    </view>
+    <view class="sentence serif">「{{en.sentence}}」</view>
+    <view class="names">
+      <view class="name-block" wx:for="{{en.names}}" wx:key="key" wx:for-item="n">
+        <view class="row-between">
+          <view>
+            <text class="nb-name serif">{{n.name}}</text>
+            <text class="nb-py">{{n.py}}</text>
+          </view>
+          <view class="star {{n.faved?'star-on':''}}" data-key="{{n.key}}" data-name="{{n.name}}" data-py="{{n.py}}" data-yy="{{n.yy}}" data-src="{{en.book}}「{{en.sentence}}」" bindtap="toggleFav">{{n.faved?'★':'☆'}}</view>
+        </view>
+        <view class="nb-yy">{{n.yy}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="notice" style="margin-top:20rpx">
+    诗词取名源自中华文学经典，仅作文化赏析与灵感参考；名字最终请以读音顺口、寓意合心为先。
+  </view>
+  <view class="safe-bottom"></view>
+</view>

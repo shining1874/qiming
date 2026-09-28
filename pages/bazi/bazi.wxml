@@ -1,0 +1,73 @@
+<view class="page">
+
+  <view class="h-section">八字五行起名</view>
+  <view class="notice">输入生辰，按八字喜用五行生成补益佳名。属中华姓名学赏析参考，纯属娱乐，不作命运断言。</view>
+
+  <view class="card card-pad">
+    <view class="field">
+      <view class="label">姓氏</view>
+      <input class="input" placeholder="如：池 / 王" value="{{surname}}" bindinput="onSurname" />
+    </view>
+    <view class="field">
+      <view class="label">性别</view>
+      <view class="seg">
+        <view class="seg-item {{sex==='男'?'on':''}}" data-s="男" bindtap="onSex">男宝</view>
+        <view class="seg-item {{sex==='女'?'on':''}}" data-s="女" bindtap="onSex">女宝</view>
+      </view>
+    </view>
+    <view class="field">
+      <view class="label">出生日期</view>
+      <picker mode="date" value="{{date}}" bindchange="onDate">
+        <view class="picker-box">{{date || '请选择出生日期'}}<text class="faint"> ›</text></view>
+      </picker>
+    </view>
+    <view class="field">
+      <view class="label">出生时辰</view>
+      <picker range="{{hours}}" value="{{hourIdx}}" bindchange="onHour">
+        <view class="picker-box">{{hours[hourIdx]}}<text class="faint"> ›</text></view>
+      </picker>
+    </view>
+    <view class="field">
+      <view class="label">名字字数</view>
+      <view class="seg">
+        <view class="seg-item {{len===1?'on':''}}" data-l="1" bindtap="onLen">单名</view>
+        <view class="seg-item {{len===2?'on':''}}" data-l="2" bindtap="onLen">双名</view>
+      </view>
+    </view>
+    <button class="btn btn-primary btn-block" bindtap="calc">生成佳名</button>
+  </view>
+
+  <block wx:if="{{result}}">
+    <view class="h-section">八字与五行</view>
+    <view class="card card-pad">
+      <view class="pillars">
+        <view class="pz" wx:for="{{result.pillars}}" wx:key="zIdx">
+          <view class="pz-lab">{{['年','月','日','时'][index]}}</view>
+          <view class="pz-gz">{{item.gan}}{{item.zhi}}</view>
+        </view>
+      </view>
+      <view class="hr"></view>
+      <view class="row-between"><text class="label">日主</text><text class="strong">{{result.dayMaster}} · {{result.strength.level}}</text></view>
+      <view class="row-between"><text class="label">喜用神</text><text class="t-red strong">{{result.xiYongText}}</text></view>
+      <view class="row-between"><text class="label">忌神</text><text class="muted">{{result.jiShenText}}</text></view>
+      <view class="hr"></view>
+      <view class="bar-legend" wx:for="{{bar}}" wx:key="wx">
+        <view class="bl"><text class="bl-wx" style="color:{{item.color}}">{{item.wx}}</text> {{item.n}}（{{item.pct}}%）</view>
+      </view>
+    </view>
+
+    <view class="h-section">为您生成（可按喜用补益）</view>
+    <view class="name-card" wx:for="{{names}}" wx:key="key">
+      <view class="name-main">
+        <text class="name-text">{{item.full}}</text>
+        <text class="name-py">{{item.py}}</text>
+        <view class="grow"></view>
+        <text class="star {{item.faved?'star-on':''}}" data-key="{{item.key}}" data-full="{{item.full}}" data-py="{{item.py}}" data-yy="{{item.yy}}" data-cd="{{item.cd}}" bindtap="toggleFav">★</text>
+      </view>
+      <view class="name-line">五行：{{item.wx}}　寓意：{{item.yy}}</view>
+      <view class="name-src">出处：{{item.cd}}</view>
+    </view>
+  </block>
+
+  <view class="safe-bottom"></view>
+</view>

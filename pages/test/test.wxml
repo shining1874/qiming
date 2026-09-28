@@ -1,0 +1,60 @@
+<view class="page">
+
+  <view class="h-section">姓名测试</view>
+  <view class="notice">测一测名字的五格数理、三才配置、五行与音律。属姓名学赏析，纯属娱乐，不作吉凶断言。</view>
+
+  <view class="card card-pad">
+    <view class="field">
+      <view class="label">姓氏</view>
+      <input class="input" placeholder="如：王" value="{{surname}}" bindinput="onSurname" />
+    </view>
+    <view class="field">
+      <view class="label">名字</view>
+      <input class="input" placeholder="如：知远 / 一" value="{{given}}" bindinput="onGiven" />
+    </view>
+    <view class="btn btn-primary btn-block" bindtap="test">开始测评</view>
+  </view>
+
+  <block wx:if="{{result}}">
+    <view class="card card-pad">
+      <view class="name-main">
+        <text class="name-text">{{result.full}}</text>
+        <text class="name-py">{{result.py}}</text>
+        <view class="grow"></view>
+        <text class="star {{result.faved?'star-on':''}}" bindtap="toggleFav">★</text>
+      </view>
+    </view>
+
+    <view class="h-section">五格数理</view>
+    <view class="card card-pad" wx:if="{{result.wuge.available}}">
+      <view class="ge-row" wx:for="{{result.geList}}" wx:key="lab">
+        <text class="ge-lab">{{item.lab}}</text>
+        <text class="ge-num">{{item.num}}</text>
+        <text class="chip {{item.cls}}">{{item.lvl}}</text>
+        <text class="ge-desc">{{item.desc}}</text>
+      </view>
+      <view class="hr"></view>
+      <view class="row-between"><text class="label">三才配置</text><text class="strong t-gold">{{result.wuge.sanText}}</text></view>
+      <view class="h-note">{{result.wuge.tendency}}</view>
+    </view>
+    <view class="card card-pad" wx:else>
+      <view class="h-note">部分字暂未收录康熙笔画，五格数理暂不评；下方仍展示音形义与五行参考。</view>
+    </view>
+
+    <view class="h-section">五行与音律</view>
+    <view class="card card-pad">
+      <view class="row gap12 wrap">
+        <view class="chip {{item.wxcls}}" wx:for="{{result.chars}}" wx:key="z">{{item.z}}（{{item.wx || '—'}}）</view>
+      </view>
+      <view class="hr"></view>
+      <view class="h-note">{{result.soundNote}}</view>
+    </view>
+
+    <view class="h-section">综合点评</view>
+    <view class="card card-pad">
+      <view class="h-note">{{result.comment}}</view>
+    </view>
+  </block>
+
+  <view class="safe-bottom"></view>
+</view>

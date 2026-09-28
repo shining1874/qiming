@@ -1,0 +1,99 @@
+<view class="page">
+
+  <view class="h-section">八字排盘</view>
+  <view class="notice">排出四柱八字、五行旺衰、大运与喜用神，并给出白话解读。属传统命理文化赏析，纯属娱乐，不构成任何命运断言。</view>
+
+  <view class="card card-pad">
+    <view class="field">
+      <view class="label">性别</view>
+      <view class="seg">
+        <view class="seg-item {{sex==='男'?'on':''}}" data-s="男" bindtap="onSex">男</view>
+        <view class="seg-item {{sex==='女'?'on':''}}" data-s="女" bindtap="onSex">女</view>
+      </view>
+    </view>
+    <view class="field">
+      <view class="label">出生日期（公历）</view>
+      <picker mode="date" value="{{date}}" bindchange="onDate">
+        <view class="picker-box">{{date || '请选择出生日期'}}<text class="faint"> ›</text></view>
+      </picker>
+    </view>
+    <view class="field">
+      <view class="label">出生时辰</view>
+      <picker range="{{hours}}" value="{{hourIdx}}" bindchange="onHour">
+        <view class="picker-box">{{hours[hourIdx]}}<text class="faint"> ›</text></view>
+      </picker>
+    </view>
+    <view class="btn btn-primary btn-block" bindtap="calc">排盘</view>
+  </view>
+
+  <block wx:if="{{chart}}">
+    <view class="h-section">四柱八字</view>
+    <view class="card card-pad pgrid">
+      <view class="pcol" wx:for="{{cols}}" wx:key="lab">
+        <view class="pc-lab">{{item.lab}}</view>
+        <view class="pc-gz">{{item.gz}}</view>
+        <view class="pc-ss">天·{{item.ganSS}}</view>
+        <view class="pc-ss">地·{{item.zhiSS}}</view>
+        <view class="pc-sub">藏 {{item.zang}}</view>
+        <view class="pc-sub">纳音 {{item.nayin}}</view>
+        <view class="pc-sub">空亡 {{item.xk}}</view>
+      </view>
+    </view>
+
+    <view class="h-section">五行与旺衰</view>
+    <view class="card card-pad">
+      <view class="row-between"><text class="label">八字</text><text class="strong serif">{{chart.baziText}}</text></view>
+      <view class="row-between"><text class="label">日主</text><text class="strong">{{chart.dayMaster}} · {{chart.level}}</text></view>
+      <view class="row-between"><text class="label">喜用神</text><text class="t-red strong">{{chart.xiYongText}}</text></view>
+      <view class="row-between"><text class="label">忌神</text><text class="muted">{{chart.jiShenText}}</text></view>
+      <view class="hr"></view>
+      <view class="wxbar-row" wx:for="{{bar}}" wx:key="wx">
+        <text class="wxbar-lab" style="color:{{item.color}}">{{item.wx}}</text>
+        <view class="wxbar"><view style="width:{{item.pct}}%;background:{{item.color}}"></view></view>
+        <text class="wxbar-num">{{item.n}} · {{chart.wang[item.wx]}}</text>
+      </view>
+    </view>
+
+    <view class="h-section">深度白话解读</view>
+    <block wx:if="{{locked}}">
+      <view class="card card-pad lock-card">
+        <view class="lock-emoji">🔒</view>
+        <view class="lock-title">深度白话解读 · 会员专享</view>
+        <view class="h-note">大运详解、喜用神精解、十神格局、逐运白话分析……开通会员后即可查看完整解读。</view>
+        <view class="btn btn-gold btn-block" bindtap="openMember">开通会员查看</view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="card card-pad">
+        <view class="exp-title">日主心性</view>
+        <view class="h-note">{{explain.dayMaster}}</view>
+      </view>
+      <view class="card card-pad">
+        <view class="exp-title">五行分布</view>
+        <view class="h-note">{{explain.wxDist}}</view>
+      </view>
+      <view class="card card-pad">
+        <view class="exp-title">身强身弱</view>
+        <view class="h-note">{{explain.strength}}</view>
+      </view>
+      <view class="card card-pad">
+        <view class="exp-title">喜用神精解</view>
+        <view class="h-note">{{explain.xiYong}}</view>
+      </view>
+      <view class="card card-pad">
+        <view class="exp-title">大运走势</view>
+        <view class="h-note">{{explain.dayun}}</view>
+        <view class="dt-row" wx:for="{{dayunSteps}}" wx:key="range">
+          <text class="dt-range">{{item.range}}</text>
+          <text class="dt-gz">{{item.gz}}</text>
+          <text class="dt-wx">干{{item.wx}}·支{{item.base}}</text>
+        </view>
+      </view>
+      <view class="card card-pad">
+        <view class="h-note">{{explain.closing}}</view>
+      </view>
+    </block>
+  </block>
+
+  <view class="safe-bottom"></view>
+</view>

@@ -1,0 +1,44 @@
+<view class="page">
+
+  <view class="h-section">藏头诗</view>
+  <view class="notice">以姓名嵌于每句句首，借草木山川、风月清辉寄寓美意。为趣味创作，仅供雅玩，不作任何断言。</view>
+
+  <view class="card card-pad">
+    <view class="field">
+      <view class="label">输入姓名（2-4 字）</view>
+      <input class="input" placeholder="如：知远 / 王小明" value="{{name}}" bindinput="onName" />
+    </view>
+    <view class="field">
+      <view class="label">体裁</view>
+      <view class="seg">
+        <view class="seg-item {{type==='5'?'on':''}}" data-t="5" bindtap="setType">五言</view>
+        <view class="seg-item {{type==='7'?'on':''}}" data-t="7" bindtap="setType">七言</view>
+      </view>
+    </view>
+    <view class="btn btn-primary btn-block" bindtap="gen">生成藏头诗</view>
+  </view>
+
+  <block wx:if="{{result}}">
+    <view class="card card-pad">
+      <view class="poem-title serif">{{result.title}}</view>
+      <view class="poem-body">
+        <view class="poem-line" wx:for="{{result.lines}}" wx:key="head">
+          <text class="poem-text serif">{{item.line}}</text>
+          <view class="row gap8" style="margin-top:6rpx;">
+            <text class="chip {{item.wxcls}}" wx:if="{{item.wx}}">{{item.wx}}</text>
+            <text class="poem-yy">{{item.yy}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="hr"></view>
+      <view class="poem-note">{{result.note}}</view>
+    </view>
+
+    <view class="card card-pad">
+      <view class="h-section" style="margin-top:0;">逐字寄寓</view>
+      <view class="h-note">{{result.yys}}</view>
+    </view>
+  </block>
+
+  <view class="safe-bottom"></view>
+</view>
